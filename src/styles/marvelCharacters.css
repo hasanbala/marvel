@@ -1,0 +1,90 @@
+.products {
+  margin: auto 4%;
+}
+.products h2 {
+  text-align: center;
+  margin: 80px 0 20px 0;
+}
+.products-sub {
+  margin: 100px 0;
+}
+.products-caption {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  position: relative;
+}
+.products-caption img {
+  margin-top: 8px;
+  width: 100%;
+  padding: 10px;
+}
+.column {
+  background-image: linear-gradient(to right, #04befe, #3f86ed);
+  border-radius: 8px;
+  padding-bottom: 10px;
+}
+.column-images {
+  /* height: 280px;
+  width: 380px; */
+}
+.column-heading,
+.column-subheading {
+  text-align: center;
+  color: #fff;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 4px;
+  margin-bottom: 4px;
+}
+
+.pokemon-spinner-column {
+  background-image: linear-gradient(to right, #04befe, #3f86ed);
+  border-radius: 8px;
+}
+.pokemon-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.fa-spinner {
+  font-size: 50px;
+  color: #fff;
+}
+
+.navLink {
+  list-style-type: none;
+  color: #fff;
+  border-radius: 4px;
+  padding: 8px 10px;
+  transition: all 0.4s ease-in-out;
+  background-size: 300% 100%;
+}
+.navLink:hover {
+  background-position: 100% 0;
+  transition: all 0.4s ease-in-out;
+}
+.navLink:focus {
+  outline: none;
+}
+.navLink {
+  background-image: linear-gradient(
+    to right,
+    #f5ce62,
+    #e43603,
+    #fa7199,
+    #e85a19
+  );
+  box-shadow: 0 4px 15px 0 rgba(229, 66, 10, 0.75);
+}
+.details {
+  background-image: linear-gradient(
+    to right,
+    #29323c,
+    #485563,
+    #2b5876,
+    #4e4376
+  ) !important;
+  box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75) !important;
+}

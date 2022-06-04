@@ -1,0 +1,32 @@
+.navbar {
+  display: flex;
+  flex-direction: column;
+  padding: 25px 0;
+  font-size: x-large;
+}
+h1 {
+  padding: 30px 0;
+  text-align: center;
+}
+.navbar ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+}
+.navbar li {
+  margin-right: 40px;
+  font-size: large;
+}
+i {
+  font-size: 32px;
+}
+i:hover {
+  cursor: pointer;
+}
+#toggle {
+  position: absolute;
+  right: 40px;
+  top: 40px;
+}
