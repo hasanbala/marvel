@@ -1,4 +1,4 @@
-import "../styles/main.css";
+import "../styles/marvelCharacters.css";
 
 export const CharacterDetails = () => {
   return (

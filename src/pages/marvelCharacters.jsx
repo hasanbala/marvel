@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
-import "../styles/main.css";
+import "../styles/marvelCharacters.css";
 
 export const MarvelCharacters = () => {
-
   const Loader = () => {
     return (
       <div className='pokemon-spinner-column'>
@@ -17,18 +16,18 @@ export const MarvelCharacters = () => {
     <div className='products'>
       <div className='products-sub'>
         <div className='products-caption'>
-            <div className='column' >
-              <div className='column-images'>
-                <img
+          <div className='column'>
+            <div className='column-images'>
+              {/* <img
                   src={}
                   alt='Character Details'
                   height={280}
                   width={380}
-                />
-              </div>
-              <div className='column-heading'>{}</div>
-              <div className='column-subheading'></div>
+                /> */}
             </div>
+            <div className='column-heading'>{}</div>
+            <div className='column-subheading'></div>
+          </div>
         </div>
       </div>
     </div>
