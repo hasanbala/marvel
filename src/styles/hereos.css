@@ -6,7 +6,7 @@
   margin: 80px 0 20px 0;
 }
 .products-sub {
-  margin: 100px 0;
+  margin: 50px 0;
 }
 .products-caption {
   display: grid;
@@ -35,7 +35,6 @@
   font-weight: 500;
   font-size: 16px;
   padding: 4px;
-  margin-bottom: 4px;
 }
 
 .pokemon-spinner-column {
@@ -87,4 +86,13 @@
     #4e4376
   ) !important;
   box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75) !important;
+}
+
+h3 {
+  margin: 10px 0;
+  text-align: center;
+}
+hr {
+  margin: 10px 0;
+  color: "#fff";
 }

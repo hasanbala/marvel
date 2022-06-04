@@ -1,13 +1,19 @@
 export const reducer = (state, action) => {
   switch (action.type) {
-    case "LOAD_CHARACTERS":
-      return {
+    case "GET_CHARACTERS": {
+      const newState = {
+        ...state,
         superheroes: [...action.payload],
       };
-    case "LOAD_DETAILS":
-      return {
-        superheroes: [...action.payload],
+      return newState;
+    }
+    case "GET_COMICS": {
+      const newState = {
+        ...state,
+        comics: [...action.payload],
       };
+      return newState;
+    }
     default:
       return state;
   }

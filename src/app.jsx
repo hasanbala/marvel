@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { MarvelCharacters, Navbar, NotFound } from "./pages";
-import { CharacterDetails } from "./pages/characterDetails";
+import { Navbar } from "./components";
+import { HeroDetails, Heroes, NotFound } from "./pages";
 import "./styles/app.css";
 
 export const App = () => {
@@ -12,8 +12,8 @@ export const App = () => {
       <BrowserRouter>
         <Navbar theme={theme} setTheme={setTheme} />
         <Routes>
-          <Route exact path='/' element={<MarvelCharacters />} />
-          <Route path='/details/' element={<CharacterDetails />} />
+          <Route exact path='/' element={<Heroes />} />
+          <Route path='/details/:id' element={<HeroDetails />} />
           <Route element={<NotFound />} />
         </Routes>
       </BrowserRouter>

@@ -17,14 +17,6 @@ export const Navbar = ({ theme, setTheme }) => {
             <b>Superheroes</b>
           </Link>
         </li>
-        <li>
-          <Link
-            className='navLink'
-            to='/details'
-            style={{ color: "#fff", textDecoration: "none" }}>
-            <b>Superhero Details</b>
-          </Link>
-        </li>
       </ul>
       <i
         id='toggle'
