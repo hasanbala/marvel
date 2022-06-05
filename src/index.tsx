@@ -1,14 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { App } from "./app";
 import { MarvelContext } from "./context/marvelContext";
-import "./styles/index.css";
+import { App } from "./app";
+import "./styles/index.scss";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
+
 root.render(
   <React.StrictMode>
     <MarvelContext>
       <App />
     </MarvelContext>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

@@ -1,0 +1,190 @@
+$primary-color: #fff;
+$secondary-color: #000;
+
+@mixin animate($time, $cloud) {
+  animation: $cloud $time linear infinite;
+}
+@mixin transformEven($X, $Y) {
+  transform: translateX($X) translateY($Y);
+}
+@mixin transformX($X) {
+  transform: translateX($X);
+}
+@mixin transformY($Y) {
+  transform: translateY($Y);
+}
+
+.dark {
+  fill: $secondary-color !important;
+}
+
+.st0 {
+  fill: $primary-color;
+  transition: 0.5s;
+}
+
+.st2 {
+  fill: #5d89af;
+}
+
+.st3 {
+  fill: #709abf;
+}
+.st4,
+.st6 {
+  fill: $primary-color;
+  stroke: #b3dcdf;
+  stroke-miterlimit: 10;
+  transition: 0.5s;
+}
+.st6 {
+  stroke: #5d89af;
+  stroke-width: 2;
+}
+.st7,
+.st8,
+.st9 {
+  stroke: #709abf;
+  stroke-miterlimit: 10;
+}
+
+.st7 {
+  stroke-width: 5;
+  stroke-linecap: round;
+  fill: none;
+}
+.st8,
+.st9 {
+  fill: $primary-color;
+}
+.st9 {
+  fill: none;
+}
+
+#cloud1 {
+  @include animate($time: 15s, $cloud: cloud003);
+}
+
+#cloud2 {
+  @include animate($time: 25s, $cloud: cloud002);
+}
+
+#cloud3 {
+  @include animate($time: 15s, $cloud: cloud003);
+}
+
+#cloud4 {
+  @include animate($time: 4s, $cloud: float);
+}
+
+#cloud5 {
+  @include animate($time: 8s, $cloud: float);
+}
+
+#cloud7 {
+  @include animate($time: 5s, $cloud: float);
+}
+
+#tracks {
+  @include animate($time: 650ms, $cloud: slide);
+}
+
+#bumps {
+  @include animate($time: 10s, $cloud: land);
+}
+
+@keyframes jig {
+  0% {
+    @include transformY($Y: 0px);
+  }
+  50% {
+    @include transformY($Y: 1px);
+  }
+  100% {
+    @include transformY($Y: 0);
+  }
+}
+
+#car-layers {
+  @include animate($time: 0.35s, $cloud: jig);
+}
+
+@keyframes land {
+  from {
+    @include transformX($X: 0);
+  }
+  to {
+    @include transformX($X: 1000px);
+  }
+}
+
+@keyframes slide {
+  from {
+    @include transformX($X: 0);
+  }
+  to {
+    @include transformX($X: 100px);
+  }
+}
+
+@keyframes cloud001 {
+  0% {
+    @include transformEven($X: -1000px, $Y: 3px);
+  }
+  100% {
+    @include transformEven($X: 1000px, $Y: 0);
+  }
+}
+
+@keyframes cloud002 {
+  0% {
+    @include transformEven($X: -1000px, $Y: 3px);
+  }
+  100% {
+    @include transformEven($X: 1000px, $Y: 0);
+  }
+}
+
+@keyframes cloud003 {
+  0% {
+    @include transformEven($X: -1000px, $Y: 3px);
+  }
+  100% {
+    @include transformEven($X: 1000px, $Y: 0);
+  }
+}
+
+@keyframes float {
+  0% {
+    @include transformEven($X: 0, $Y: 0);
+  }
+  50% {
+    @include transformEven($X: 8px, $Y: 5px);
+  }
+  100% {
+    @include transformEven($X: 0px, $Y: 0);
+  }
+}
+
+#bracefront,
+#braceback {
+  @include animate($time: 1s, $cloud: braces);
+}
+
+@keyframes braces {
+  0% {
+    @include transformX($X: -2px);
+  }
+  25% {
+    @include transformX($X: 3px);
+  }
+  50% {
+    @include transformX($X: -2px);
+  }
+  75% {
+    @include transformX($X: 3px);
+  }
+  100% {
+    @include transformX($X: -2px);
+  }
+}

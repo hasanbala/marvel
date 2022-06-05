@@ -1,0 +1,102 @@
+$primary-color: #fff;
+$gradient-color: linear-gradient(to right, #f5ce62, #e85a19);
+$text-default: center;
+
+.navbartop ul {
+  justify-content: space-evenly !important;
+  margin-left: 20% !important;
+}
+
+.navbarsub {
+  background: $gradient-color;
+  padding: 8px 0;
+
+  .navbarsub-list {
+    margin: auto 12%;
+
+    i {
+      font-size: 24px;
+      &:hover {
+        cursor: pointer;
+        opacity: 0.5;
+        transition: 0.6;
+      }
+    }
+
+    h1 {
+      transition: 0.6s;
+      font-size: 24px;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: $text-default;
+    }
+
+    .div-hero {
+      color: #bebebe;
+      position: relative;
+      font-size: 24px;
+      margin-right: 20px;
+
+      &::before {
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        overflow: hidden;
+        max-width: 0;
+        border-bottom: 2px solid $primary-color;
+        color: $primary-color;
+        content: attr(data-hover);
+        transition: max-width 0.5s;
+      }
+
+      &:hover::before {
+        max-width: 100%;
+      }
+    }
+
+    .logo {
+      margin-right: auto;
+      font-weight: bolder;
+      font-size: 14px;
+      padding: 4px 0;
+      display: flex;
+      flex-direction: row;
+
+      .logo-img {
+        width: 32px;
+        height: 32px;
+        text-align: $text-default;
+        align-self: $text-default;
+        margin-right: 4px;
+      }
+
+      .brand-a {
+        color: $primary-color !important;
+      }
+    }
+
+    .item {
+      margin-left: 20px;
+    }
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .navbarsub-list {
+    h1 {
+      font-size: 18px !important;
+    }
+    i {
+      font-size: 18px !important;
+    }
+  }
+}
+@media screen and (min-width: 350px) {
+  .navbarsub {
+    min-width: 350px !important;
+  }
+}

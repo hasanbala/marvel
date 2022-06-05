@@ -1,18 +1,26 @@
 import { Link } from "react-router-dom";
-import "../styles/hereos.css";
-export const Hero = (props) => {
+import "styles/hereos.scss";
+
+export const Hero = (props: Props) => {
   return (
-    <Link className='column' to={`details/${props.id}`}>
-      <div className='column-images'>
+    <Link className="column" to={`details/${props.id}`}>
+      <div className="column-images">
         <img
           src={`${props.thumbnail.path}/portrait_uncanny.${props.thumbnail.extension}`}
-          alt='Character Details'
-          height={280}
-          width={380}
+          alt="Character Details"
         />
       </div>
-      <div className='column-heading'>{props.name}</div>
-      <div className='column-subheading'>{""}</div>
+      <div className="column-heading">{props.name}</div>
+      <div className="column-subheading">{""}</div>
     </Link>
   );
 };
+
+interface Props {
+  id: number | string;
+  name: string;
+  thumbnail: {
+    path: string;
+    extension: string;
+  };
+}

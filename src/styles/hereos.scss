@@ -1,0 +1,90 @@
+$primary-color: #fff;
+$gradient-color: linear-gradient(to right, #f5ce62, #e85a19);
+$text-default: center;
+
+@mixin grid($num) {
+  grid-template-columns: repeat($num, 1fr) !important;
+}
+
+.products {
+  margin: auto 4%;
+
+  h2 {
+    text-align: $text-default;
+    margin: 80px 0 20px 0;
+  }
+
+  .products-sub {
+    margin: 50px 0;
+    position: relative;
+
+    .loading {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      i {
+        color: #000;
+      }
+    }
+    .products-caption {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      position: relative;
+
+      img {
+        margin-top: 8px;
+        width: 100%;
+        padding: 10px;
+      }
+    }
+
+    .column {
+      background-image: $gradient-color;
+      border-radius: 8px;
+      padding-bottom: 10px;
+
+      .column-heading,
+      .column-subheading {
+        text-align: $text-default;
+        color: $primary-color;
+        font-weight: 500;
+        font-size: 16px;
+        padding: 4px;
+      }
+    }
+  }
+}
+
+.pokemon-spinner-column {
+  background-image: $gradient-color;
+  border-radius: 8px;
+}
+.pokemon-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.fa-spinner {
+  font-size: 50px;
+  color: $primary-color;
+}
+
+@media screen and (max-width: 1050px) {
+  .products-caption {
+    @include grid($num: 3);
+  }
+}
+@media screen and (max-width: 750px) {
+  .products-caption {
+    @include grid($num: 2);
+  }
+}
+@media screen and (max-width: 500px) {
+  .products-caption {
+    @include grid($num: 1);
+  }
+}
