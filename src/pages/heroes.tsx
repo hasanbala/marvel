@@ -1,54 +1,43 @@
-import { useEffect, useRef } from "react";
+import { useContext, useEffect } from "react";
+import { AppContext } from "context/marvelContext";
+import { MarvelState } from "types";
 import { Hero } from "components/hero";
-import { useAppContext } from "context/marvelContext";
 import "styles/hereos.scss";
 
 export const Heroes = () => {
-  const { state, getHeroes, loading } = useAppContext();
+  const { superheroes, getHeroes } = useContext(AppContext) as MarvelState;
 
-  const myRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    getHeroes(30, 0);
-  }, []);
-
-  useEffect(() => {
-    const node = myRef?.current;
-    if (node) {
-      const observer = new IntersectionObserver((entries) => {
-        const entry = entries[0];
-        if (entry.isIntersecting) {
-          getHeroes(35, 10);
-        }
-      });
-      observer.observe(node);
+  const handleScroll = (e: any): void => {
+    const { innerHeight } = window;
+    const { scrollTop } = e.target.documentElement;
+    const { scrollHeight } = e.target.documentElement;
+    if (
+      scrollHeight >= innerHeight + scrollTop + 900 &&
+      scrollHeight <= innerHeight + scrollTop + 1000
+    ) {
+      console.log("girdi");
+      getHeroes(10);
     }
-  }, []);
+  };
 
-  // if (loading) {
-  //   return (
-  //     <div className="products">
-  //       <div className="products-sub">
-  //         <div className="gotload">
-  //           <div className="loading fa-8x">
-  //             <i className="fas fa-spinner fa-spin"></i>
-  //           </div>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   );
-  // }
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
-    <div className="products">
-      <div className="products-sub">
-        <div className="products-caption">
-          {state.superheroes?.map((hero) => (
-            <Hero key={hero.id} id={hero.id} thumbnail={hero.thumbnail} name={hero.name} />
-          ))}
+    <div>
+      <div className="products">
+        <div className="products-sub">
+          <div className="products-caption">
+            {superheroes?.map((hero, index) => (
+              <Hero key={index} id={hero.id} thumbnail={hero.thumbnail} name={hero.name} />
+            ))}
+          </div>
         </div>
       </div>
-      <div ref={myRef}>asdgfdsafgeds</div>
     </div>
   );
 };

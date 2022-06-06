@@ -14,6 +14,21 @@ main {
   padding: 1rem;
 }
 
+.gradientlist {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+
+  img {
+    border-radius: 5px;
+  }
+
+  .grad-sub {
+    text-align: center;
+  }
+}
+
 ol.gradient-list {
   counter-reset: gradient-counter;
   list-style: none;
@@ -95,6 +110,7 @@ ol.gradient-list {
         .det-header {
           margin-left: 50px;
           margin-top: 10px;
+          text-align: center;
 
           h2 {
             margin-bottom: 20px;

@@ -1,24 +1,23 @@
-import { useContext, useReducer, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { createContext } from "react";
-import { MarvelContextType, MarvelState, ReducerActionType } from "../types";
+import { IComics, ISuperHeroes, MarvelState } from "../types";
 import { fetchCharacters, fetchComicsList } from "api/fetchMarvelsApi";
-import { marvelReducer } from "reducers/marvelReducer";
 
-const initialState: MarvelContextType | any = {};
-const AppContext = createContext(initialState as MarvelContextType);
+export const AppContext = createContext<MarvelState | null>(null);
 
 export const useAppContext = () => useContext(AppContext);
 
 export const MarvelContext = ({ children }: Props) => {
-  const [state, dispatch] = useReducer(marvelReducer, initialState);
+  const [superheroes, setSuperHeroes] = useState<ISuperHeroes[]>([]);
+  const [comics, setComics] = useState<IComics[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
-  const getHeroes = (characterLimits: number) => {
+  const getHeroes = (characterOffet: number) => {
     setLoading(true);
-    fetchCharacters(characterLimits)
-      .then((res) =>
-        dispatch({ type: ReducerActionType.GET_CHARACTERS, payload: res.data.results }),
-      )
+    fetchCharacters(characterOffet)
+      .then((res) => {
+        setSuperHeroes((superheroes) => [...superheroes, ...res.data.results]);
+      })
       .catch((err) => console.error(err))
       .finally(() => setLoading(false));
   };
@@ -26,19 +25,23 @@ export const MarvelContext = ({ children }: Props) => {
   const getComics = (id: number) => {
     setLoading(true);
     fetchComicsList(id)
-      .then((res) => dispatch({ type: ReducerActionType.GET_COMICS, payload: res.data.results }))
+      .then((res) => setComics(res.data.results))
       .catch((err) => console.error(err))
       .finally(() => setLoading(false));
   };
 
-  const contextValue = {
-    state,
+  useEffect(() => {
+    console.log("context");
+    getHeroes(0);
+  }, []);
+
+  const contextValue: MarvelState = {
+    superheroes,
+    comics,
     getHeroes,
     getComics,
     loading,
-    dispatch: function (): void {
-      throw new Error("Function not implemented.");
-    },
+    setLoading,
   };
 
   return <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>;

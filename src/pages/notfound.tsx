@@ -4,7 +4,7 @@ interface IProps {
 }
 export const NotFound: React.FC<IProps> = ({ theme }) => {
   return (
-    <div>
+    <div className="notfound-god">
       <div>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 355">
           <g id="ocean">

@@ -1,4 +1,4 @@
-export interface IHero {
+export interface ISuperHeroes {
   id: number | string;
   description: string;
   name: string;
@@ -7,32 +7,23 @@ export interface IHero {
     extension: string;
   };
 }
-
-export type MarvelState = {
-  superheroes: IHero[];
-  comics: IHero[];
-};
-
-export type Actions =
-  | { type: "GET_CHARACTERS"; payload: any }
-  | { type: "GET_COMICS"; payload: any }
-  | { type: "LOAD_CHARACTERS"; payload: any };
-
-export type MarvelContextType = {
-  state: MarvelState;
-  dispatch: React.Dispatch<any>;
-  getHeroes: (characterLimits: number, characterOffet: number) => void;
-  getComics: (id: number) => void;
-  loading: boolean;
-};
-
-export enum ReducerActionType {
-  GET_CHARACTERS,
-  GET_COMICS,
-  LOAD_CHARACTERS,
+export interface IComics {
+  id: number | string;
+  description: string;
+  name: string;
+  title: string;
+  pageCount?: number;
+  thumbnail: {
+    path: string;
+    extension: string;
+  };
 }
 
-export type ReducerAction = {
-  type: ReducerActionType;
-  payload?: any;
+export type MarvelState = {
+  superheroes: ISuperHeroes[];
+  comics: IComics[];
+  loading: boolean;
+  setLoading: (value: boolean) => void;
+  getHeroes: (value: number) => void;
+  getComics: (id: number) => void;
 };

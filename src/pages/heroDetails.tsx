@@ -1,35 +1,47 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useAppContext } from "context/marvelContext";
+import { AppContext } from "context/marvelContext";
+import { fetchCharacter } from "api/fetchMarvelsApi";
+import { MarvelState } from "types";
 import "styles/herodetails.scss";
 
 export const HeroDetails = () => {
-  // const { state, getComics, loading } = useAppContext();
-  // const { id } = useParams();
+  const { comics, loading, getComics, setLoading } = useContext(AppContext) as MarvelState;
+  const [character, setCharacter] = useState<ICharacter[]>([]);
+  const { id } = useParams();
 
-  // useEffect(() => {
-  //   getComics(id);
-  // }, [id]);
+  const getCharacter = (id: number) => {
+    setLoading(true);
+    fetchCharacter(id)
+      .then((res) => setCharacter(res.data.results))
+      .catch((err) => console.error(err))
+      .finally(() => setLoading(false));
+  };
 
-  // if (loading) {
-  //   return (
-  //     <div className="details-god">
-  //       <div className="details">
-  //         <div className="gotload">
-  //           <div className="loading fa-8x">
-  //             <i className="fas fa-spinner fa-spin"></i>
-  //           </div>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   );
-  // }
+  useEffect(() => {
+    getComics(Number(id));
+    getCharacter(Number(id));
+  }, [id]);
+
+  if (loading) {
+    return (
+      <div className="details-god">
+        <div className="details">
+          <div className="gotload">
+            <div className="loading fa-8x">
+              <i className="fas fa-spinner fa-spin"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="details-god">
-      {/* <div className="details">
+      <div className="details">
         <div className="det-top">
-          {state.superheroes?.map((hero) =>
+          {character?.map((hero) =>
             hero.id == id ? (
               <div key={hero.id} className="det-data">
                 <div>
@@ -38,13 +50,15 @@ export const HeroDetails = () => {
                     alt="Character Details"
                   />
                 </div>
-                <div className="det-header">
-                  <h2>{hero.name}</h2>
-                  <p>
-                    {!hero.description
-                      ? "This character has no definition feature."
-                      : hero.description}
-                  </p>
+                <div className="det-header-god">
+                  <div className="det-header">
+                    <h2>{hero.name}</h2>
+                    <p>
+                      {!hero.description
+                        ? "This character has no definition feature."
+                        : hero.description}
+                    </p>
+                  </div>
                 </div>
               </div>
             ) : (
@@ -56,20 +70,34 @@ export const HeroDetails = () => {
           <h2>Comics Lists</h2>
           <main>
             <ol className="gradient-list">
-              {state.comics?.map((comic) => (
-                <li key={comic.id}>
-                  <h2>{comic.title}</h2>
+              {comics.map((comic, index) => (
+                <li key={index} className="gradientlist">
+                  <div>
+                    <img
+                      src={`${comic.thumbnail.path}/portrait_incredible.${comic.thumbnail.extension}`}
+                      alt="Character Details"
+                    />
+                  </div>
+                  <div className="grad-sub">
+                    <h2>{comic.title}</h2>
+                    <p>
+                      <b>Description : </b> {comic.description ?? "NONE"}
+                    </p>
+                    <p>
+                      <b>Page Count : </b> {comic.pageCount ?? "NONE"}
+                    </p>
+                  </div>
                 </li>
               ))}
             </ol>
           </main>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };
 
-interface HProps {
+interface ICharacter {
   id: number | string;
   description: string;
   name: string;
@@ -77,10 +105,4 @@ interface HProps {
     path: string;
     extension: string;
   };
-}
-
-interface CProps {
-  id: number;
-  title: string;
-  pageCount: number;
 }
