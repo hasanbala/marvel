@@ -2,7 +2,7 @@ const hash = "97defabe234af625aa4e65ac0c8c43e2";
 const publicKey = "aa034f9786c1e61afb18565547046c8f";
 const baseUrl = "https://gateway.marvel.com:443/v1/public/characters";
 
-export const fetchCharacters = async (offset: number = 5) => {
+export const fetchCharacters = async (offset: number) => {
   const endPointUrl = `${baseUrl}?limit=30&offset=${offset}&ts=1&apikey=${publicKey}&hash=${hash}`;
   const response = await fetch(endPointUrl);
   const data = await response.json();

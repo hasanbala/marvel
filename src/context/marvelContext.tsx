@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { createContext } from "react";
 import { IComics, ISuperHeroes, MarvelState } from "../types";
 import { fetchCharacters, fetchComicsList } from "api/fetchMarvelsApi";
@@ -29,11 +29,6 @@ export const MarvelContext = ({ children }: Props) => {
       .catch((err) => console.error(err))
       .finally(() => setLoading(false));
   };
-
-  useEffect(() => {
-    console.log("context");
-    getHeroes(0);
-  }, []);
 
   const contextValue: MarvelState = {
     superheroes,

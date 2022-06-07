@@ -31,7 +31,7 @@ $text-default: center;
     }
     .products-caption {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(6, 1fr);
       gap: 10px;
       position: relative;
 
@@ -76,12 +76,12 @@ $text-default: center;
 
 @media screen and (max-width: 1050px) {
   .products-caption {
-    @include grid($num: 4);
+    @include grid($num: 5);
   }
 }
 @media screen and (max-width: 750px) {
   .products-caption {
-    @include grid($num: 2);
+    @include grid($num: 3);
   }
 }
 @media screen and (max-width: 500px) {
