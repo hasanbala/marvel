@@ -1,5 +1,5 @@
-$primary-color: #fff;
-$secondary-color: #000;
+$primary-color: var(--theme-background);
+$third-color: var(--theme-color);
 
 @mixin animate($time, $cloud) {
   animation: $cloud $time linear infinite;
@@ -18,13 +18,10 @@ $secondary-color: #000;
   height: 100vh;
 }
 
-.dark {
-  fill: $secondary-color !important;
-}
-
 .st0 {
   fill: $primary-color;
-  transition: 0.5s;
+  color: $third-color;
+  transition: 0.3s;
 }
 
 .st2 {
@@ -37,9 +34,10 @@ $secondary-color: #000;
 .st4,
 .st6 {
   fill: $primary-color;
+  color: $third-color;
   stroke: #b3dcdf;
   stroke-miterlimit: 10;
-  transition: 0.5s;
+  transition: 0.3s;
 }
 .st6 {
   stroke: #5d89af;
@@ -60,6 +58,7 @@ $secondary-color: #000;
 .st8,
 .st9 {
   fill: $primary-color;
+  color: $third-color;
 }
 .st9 {
   fill: none;

@@ -1,20 +1,16 @@
-import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { HeroDetails, Heroes, NotFound } from "pages/index";
-import { Navbar } from "components/navbar";
-import "styles/app.scss";
+import { HeroDetails, Heroes, NotFound } from "pages";
+import { Navbar } from "layout";
 
 export const App = () => {
-  const [theme, setTheme] = useState<string>("");
-
   return (
-    <div className={`app ${theme}`}>
+    <div className="app">
       <BrowserRouter>
-        <Navbar theme={theme} setTheme={setTheme} />
+        <Navbar />
         <Routes>
           <Route path="/" element={<Heroes />} />
           <Route path="/details/:id" element={<HeroDetails />} />
-          <Route path="*" element={<NotFound theme={theme} />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </div>

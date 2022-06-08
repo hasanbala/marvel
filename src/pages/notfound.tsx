@@ -1,14 +1,12 @@
-import "styles/notfound.scss";
-interface IProps {
-  theme: string;
-}
-export const NotFound: React.FC<IProps> = ({ theme }) => {
+import "styles/notFound.scss";
+
+export const NotFound = () => {
   return (
     <div className="notfound-god">
       <div>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 355">
           <g id="ocean">
-            <path id="sky" className={`st0 ${theme}`} d="M0 0h1000v203.1H0z" />
+            <path id="sky" className="st0" d="M0 0h1000v203.1H0z" />
             <linearGradient
               id="water_1_"
               gradientUnits="userSpaceOnUse"
@@ -20,26 +18,14 @@ export const NotFound: React.FC<IProps> = ({ theme }) => {
               <stop offset="1" stopColor="#b3dcdf" />
             </linearGradient>
             <path id="water" fill="url(#water_1_)" d="M0 200.7h1000V354H0z" />
-            <path id="land" className={`st0 ${theme}`} d="M0 273.4h1000V354H0z" />
+            <path id="land" className="st0" d="M0 273.4h1000V354H0z" />
             <g id="bumps">
-              <path className={`st0 ${theme}`} d="M0 275.2s83.8-28 180-28 197 28 197 28H0z" />
-              <path
-                className={`st0 ${theme}`}
-                d="M377 275.2s54.7-28 117.5-28 128.6 28 128.6 28H377z"
-              />
-              <path
-                className={`st0 ${theme}`}
-                d="M623.2 275.2s83.7-28 179.9-28 196.9 28 196.9 28H623.2z"
-              />
-              <path className={`st0 ${theme}`} d="M-998 275.2s83.8-28 180-28 197 28 197 28h-377z" />
-              <path
-                className={`st0 ${theme}`}
-                d="M-621 275.2s54.7-28 117.5-28 128.6 28 128.6 28H-621z"
-              />
-              <path
-                className={`st0 ${theme}`}
-                d="M-374.8 275.2s83.7-28 179.9-28S2 275.2 2 275.2h-376.8z"
-              />
+              <path className="st0" d="M0 275.2s83.8-28 180-28 197 28 197 28H0z" />
+              <path className="st0" d="M377 275.2s54.7-28 117.5-28 128.6 28 128.6 28H377z" />
+              <path className="st0" d="M623.2 275.2s83.7-28 179.9-28 196.9 28 196.9 28H623.2z" />
+              <path className="st0" d="M-998 275.2s83.8-28 180-28 197 28 197 28h-377z" />
+              <path className="st0" d="M-621 275.2s54.7-28 117.5-28 128.6 28 128.6 28H-621z" />
+              <path className="st0" d="M-374.8 275.2s83.7-28 179.9-28S2 275.2 2 275.2h-376.8z" />
             </g>
           </g>
           <g id="tracks">
@@ -251,59 +237,59 @@ export const NotFound: React.FC<IProps> = ({ theme }) => {
           <g id="cloudsAll">
             <path
               id="cloud1"
-              className={`st4 ${theme}`}
+              className="st4"
               d="M19.5 69.7s-21.3.5-25-12.2c0 0-4.3-21.3 16-21.8 0 0-2.1-12.2 12.2-14.9 0 0 15-3.2 21.3 6.9 0 0 3.6-20.7 17.8-22.3 0 0 24-3 26.6 13.1 0 0 .1 9.5-2.8 13.5 0 0 9.5-15 26.5-4.8 0 0 12.1 7.9 7 20.2 0 0 16 4.8 10.1 18.1 0 0-10.2 8.5-17.1-1.1 0 0-5.5 16-32.5 16 0 0-19.1 2.1-27-13.3 0 0 .5 10.1-13.3 10.6-.1 0-20.3 3.2-19.8-8z"
             />
             <path
               id="cloud3"
-              className={`st4 ${theme}`}
+              className="st4"
               d="M836 132s-18.3 2.1-22.2-4.9c0 0-4.9-11.8 12.5-13.8 0 0-2.5-6.8 9.7-9.6 0 0 12.7-3.1 18.7 2.1 0 0 2-12.2 14-14.3 0 0 16.6-3.3 23.7 2.1 0 0 4.8 3.9 2.4 6.5 0 0 3.1-4.8 18.4-.4 0 0 10.9 3.5 7.2 11 0 0 13.8-1.5 9.7 9.5 0 0-4.1 10.8-15.5 4.8 0 0-3.1 5.6-26.4 7.9 0 0-16.3 2.8-24-5.3 0 0 1 5.7-10.8 7.2-.1.1-17.2 3.6-17.4-2.8z"
             />
             <path
               id="cloud2"
-              className={`st4 ${theme}`}
+              className="st4"
               d="M19.3 159.5s-15.9.6-18.8-5.1c0 0-3.4-9.5 11.7-10.1 0 0-1.7-5.5 9-6.9 0 0 11.2-1.7 16 2.8 0 0 2.5-9.4 13.1-10.3 0 0 17.9-1.8 20 5.4 0 0 .2 4.3-2 6.1 0 0 6.9-6.9 19.8-2.6 0 0 9.1 3.4 5.5 9 0 0 6.5 0 4.5 6.7 0 0-2.6 5.6-9.6 1 0 0-4 7.3-24.2 7.7 0 0-14.2 1.3-20.4-5.5 0 0 .5 4.5-9.8 5 0 .1-15 1.8-14.8-3.2z"
             />
             <path
               id="cloud4"
-              className={`st4 ${theme}`}
+              className="st4"
               d="M370.3 109.5s15.9.6 18.8-5.1c0 0 3.4-9.5-11.7-10.1 0 0 1.7-5.5-9-6.9 0 0-11.2-1.7-16 2.8 0 0-2.5-9.4-13.1-10.3 0 0-17.9-1.8-20 5.4 0 0-.2 4.3 2 6.1 0 0-6.9-6.9-19.8-2.6 0 0-9.1 3.4-5.5 9 0 0-12 1.9-7.7 8 0 0 7.5 4 12.8-.2 0 0 4 7.3 24.2 7.7 0 0 14.2 1.3 20.4-5.5 0 0-.5 4.5 9.8 5 0 0 15.1 1.7 14.8-3.3z"
             />
             <path
               id="cloud5"
-              className={`st4 ${theme}`}
+              className="st4"
               d="M511.7 12.4s-21.3-.3-25 7c0 0-4.3 12.2 16 12.5 0 0-2.1 7 12.2 8.6 0 0 15 1.8 21.3-4 0 0 3.6 11.9 17.8 12.8 0 0 19.5 1.6 27-4.4 0 0 5-4.4 2.1-6.7 0 0 4.1 4.4 21.2-1.5 0 0 12.1-4.6 7-11.6 0 0 16-2.8 10.1-10.4 0 0-10.2-4.9-17.1.6 0 0-5.5-9.2-32.5-9.2 0 0-19.1-1.2-27 7.6 0 0 .5-5.8-13.3-6.1-.1.2-20.3-1.6-19.8 4.8z"
             />
           </g>
           <g id="train">
             <path fill="#b3dcdf" d="M344.5 248.5h507.2v37.8H344.5z" />
             <g id="wheels">
-              <circle className={`st6 ${theme}`} cx="384.1" cy="285.6" r="15.1" />
+              <circle className="st6" cx="384.1" cy="285.6" r="15.1" />
               <path
                 className="st2"
                 d="M384.1 295.7c-5.6 0-10.1-4.5-10.1-10.1s4.5-10.1 10.1-10.1 10.1 4.5 10.1 10.1c0 5.5-4.6 10.1-10.1 10.1z"
               />
-              <circle className={`st6 ${theme}`} cx="416.1" cy="285.6" r="15.1" />
+              <circle className="st6" cx="416.1" cy="285.6" r="15.1" />
               <path
                 className="st2"
                 d="M416.1 295.7c-5.6 0-10.1-4.5-10.1-10.1s4.5-10.1 10.1-10.1 10.1 4.5 10.1 10.1c0 5.5-4.6 10.1-10.1 10.1z"
               />
-              <circle className={`st6 ${theme}`} cx="469.1" cy="285.6" r="15.1" />
+              <circle className="st6" cx="469.1" cy="285.6" r="15.1" />
               <path
                 className="st2"
                 d="M469.1 295.7c-5.6 0-10.1-4.5-10.1-10.1s4.5-10.1 10.1-10.1 10.1 4.5 10.1 10.1c0 5.5-4.6 10.1-10.1 10.1z"
               />
-              <circle className={`st6 ${theme}`} cx="734.1" cy="285.6" r="15.1" />
+              <circle className="st6" cx="734.1" cy="285.6" r="15.1" />
               <path
                 className="st2"
                 d="M734.1 295.7c-5.6 0-10.1-4.5-10.1-10.1s4.5-10.1 10.1-10.1 10.1 4.5 10.1 10.1c0 5.5-4.6 10.1-10.1 10.1z"
               />
-              <circle className={`st6 ${theme}`} cx="766.1" cy="285.6" r="15.1" />
+              <circle className="st6" cx="766.1" cy="285.6" r="15.1" />
               <path
                 className="st2"
                 d="M766.1 295.7c-5.6 0-10.1-4.5-10.1-10.1s4.5-10.1 10.1-10.1 10.1 4.5 10.1 10.1c0 5.5-4.6 10.1-10.1 10.1z"
               />
-              <circle className={`st6 ${theme}`} cx="821.1" cy="285.6" r="15.1" />
+              <circle className="st6" cx="821.1" cy="285.6" r="15.1" />
               <path
                 className="st2"
                 d="M821.1 295.7c-5.6 0-10.1-4.5-10.1-10.1s4.5-10.1 10.1-10.1 10.1 4.5 10.1 10.1c0 5.5-4.6 10.1-10.1 10.1z"

@@ -5,37 +5,49 @@ $yellow: #fddc32;
 $white: #fafafa;
 
 %boxshadow {
-  box-shadow: 0.25rem 0.25rem 0.6rem rgba(0, 0, 0, 0.05), 0 0.5rem 1.125rem rgba(75, 0, 0, 0.05);
+  box-shadow: 0.25rem 0.25rem 0.6rem var(--box-color), 0 0.5rem 1.125rem var(--box-color);
 }
 
 main {
   display: block;
   margin: auto 5%;
   padding: 1rem;
+  color: #000;
 }
 
 .gradientlist {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   flex-direction: row;
 
   img {
     border-radius: 5px;
+    margin-right: auto;
+    margin-left: 20px;
   }
 
   .grad-sub {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    p {
+      margin: 0 50px;
+      color: var(--box-color);
+    }
   }
 }
 
 ol.gradient-list {
   counter-reset: gradient-counter;
-  list-style: none;
   margin: 1.75rem 0;
   padding-left: 1rem;
+
   > li {
-    background: white;
+    background: var(--theme-background);
+    color: var(--box-color);
     border-radius: 0 0.5rem 0.5rem 0.5rem;
     @extend %boxshadow;
     counter-increment: gradient-counter;
@@ -43,6 +55,7 @@ ol.gradient-list {
     min-height: 3rem;
     padding: 1rem 1rem 1rem 3rem;
     position: relative;
+
     &::before,
     &::after {
       background: linear-gradient(135deg, $blue 0%, $green 100%);
@@ -55,20 +68,22 @@ ol.gradient-list {
       top: -1rem;
       width: 3rem;
     }
+
     &::before {
       align-items: flex-end;
       @extend %boxshadow;
       content: counter(gradient-counter);
       color: $black;
       display: flex;
-      font: 900 1.5em/1 "Montserrat";
       justify-content: flex-end;
       padding: 0.125em 0.25em;
       z-index: 1;
     }
+
     &:nth-child(3n):before {
       background: linear-gradient(135deg, $green 0%, $yellow 100%);
     }
+
     + li {
       margin-top: 2rem;
     }

@@ -15,18 +15,15 @@
 
 html {
   scroll-behavior: smooth;
-  // background: #000;
-  // color: #fff;
+  background: var(--theme-background);
+  color: var(--theme-color);
+  transition: 0.3s;
 }
 
 body {
   -moz-osx-font-smoothing: grayscale;
   font-family: Volvo Novum, Arial, sans-serif;
-  // background: #000;
-  // color: #fff;
-}
-
-:root {
-  // background: #000;
-  // color: #fff;
+  background-color: var(--theme-background);
+  color: var(--theme-color);
+  transition: 0.3s;
 }

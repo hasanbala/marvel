@@ -1,9 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { AppContext } from "context/marvelContext";
-import { fetchCharacter } from "api/fetchMarvelsApi";
+import { HeroDetail, ComicDettail } from "components";
+import { AppContext } from "context";
+import { fetchCharacter } from "api";
 import { MarvelState } from "types";
-import "styles/herodetails.scss";
+import "styles/heroDetails.scss";
 
 export const HeroDetails = () => {
   const { comics, loading, getComics, setLoading } = useContext(AppContext) as MarvelState;
@@ -42,25 +43,14 @@ export const HeroDetails = () => {
       <div className="details">
         <div className="det-top">
           {character?.map((hero) =>
-            hero.id == id ? (
-              <div key={hero.id} className="det-data">
-                <div>
-                  <img
-                    src={`${hero.thumbnail.path}.${hero.thumbnail.extension}`}
-                    alt="Character Details"
-                  />
-                </div>
-                <div className="det-header-god">
-                  <div className="det-header">
-                    <h2>{hero.name}</h2>
-                    <p>
-                      {!hero.description
-                        ? "This character has no definition feature."
-                        : hero.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
+            hero.id === Number(id) ? (
+              <HeroDetail
+                key={hero.id}
+                id={hero.id}
+                name={hero.name}
+                description={hero.description}
+                thumbnail={hero.thumbnail}
+              />
             ) : (
               ""
             ),
@@ -70,24 +60,15 @@ export const HeroDetails = () => {
           <h2>Comics Lists</h2>
           <main>
             <ol className="gradient-list">
-              {comics.map((comic, index) => (
-                <li key={index} className="gradientlist">
-                  <div>
-                    <img
-                      src={`${comic.thumbnail.path}/portrait_incredible.${comic.thumbnail.extension}`}
-                      alt="Character Details"
-                    />
-                  </div>
-                  <div className="grad-sub">
-                    <h2>{comic.title}</h2>
-                    <p>
-                      <b>Description : </b> {comic.description ?? "NONE"}
-                    </p>
-                    <p>
-                      <b>Page Count : </b> {comic.pageCount ?? "NONE"}
-                    </p>
-                  </div>
-                </li>
+              {comics.map((comic) => (
+                <ComicDettail
+                  key={comic.id}
+                  description={comic.description}
+                  thumbnail={comic.thumbnail}
+                  id={Number(comic.id)}
+                  pageCount={Number(comic.pageCount)}
+                  title={comic.title}
+                />
               ))}
             </ol>
           </main>
