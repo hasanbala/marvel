@@ -1,42 +1,24 @@
+import { useGetMarvels } from "@hooks/useGetMarvels";
 import { useContext, useState } from "react";
 import { createContext } from "react";
-import { IComics, ISuperHeroes, MarvelState } from "../types";
-import { fetchCharacters, fetchComicsList } from "api/fetchMarvelsApi";
+import { ISuperHeroes, MarvelState } from "../types";
 
 export const AppContext = createContext<MarvelState | null>(null);
-
 export const useAppContext = () => useContext(AppContext);
 
 export const MarvelContext = ({ children }: Props) => {
   const [superheroes, setSuperHeroes] = useState<ISuperHeroes[]>([]);
-  const [comics, setComics] = useState<IComics[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
+  const endPoint = `?limit=30&offset=${superheroes.length}`;
+  const { data, error } = useGetMarvels(endPoint);
+  console.log(data);
+  const getHeroes = () => setSuperHeroes((superheroes) => [...superheroes, ...data.data.results]);
 
-  const getHeroes = (characterOffet: number) => {
-    setLoading(true);
-    fetchCharacters(characterOffet)
-      .then((res) => {
-        setSuperHeroes((superheroes) => [...superheroes, ...res.data.results]);
-      })
-      .catch((err) => console.error(err))
-      .finally(() => setLoading(false));
-  };
-
-  const getComics = (id: number) => {
-    setLoading(true);
-    fetchComicsList(id)
-      .then((res) => setComics(res.data.results))
-      .catch((err) => console.error(err))
-      .finally(() => setLoading(false));
-  };
+  if (error) return <div>failed to load</div>;
+  if (!data) return <div>loading...</div>;
 
   const contextValue: MarvelState = {
     superheroes,
-    comics,
     getHeroes,
-    getComics,
-    loading,
-    setLoading,
   };
 
   return <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>;

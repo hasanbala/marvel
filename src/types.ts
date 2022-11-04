@@ -7,6 +7,7 @@ export interface ISuperHeroes {
     extension: string;
   };
 }
+
 export interface IComics {
   id: number | string;
   description: string;
@@ -21,9 +22,5 @@ export interface IComics {
 
 export interface MarvelState {
   superheroes: ISuperHeroes[];
-  comics: IComics[];
-  loading: boolean;
-  setLoading: (value: boolean) => void;
-  getHeroes: (value: number) => void;
-  getComics: (id: number) => void;
+  getHeroes: () => void;
 }

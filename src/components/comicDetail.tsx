@@ -1,6 +1,6 @@
 import "styles/heroDetails.scss";
 
-export const ComicDettail = (props: Props) => {
+export const ComicDetail = (props: Props) => {
   return (
     <>
       <li key={props.id} className="gradientlist">

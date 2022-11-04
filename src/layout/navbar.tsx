@@ -1,4 +1,4 @@
-import { ThemeMode } from "components";
+import { ThemeMode } from "@components/themeMode";
 import { Link } from "react-router-dom";
 import "styles/navbar.scss";
 

@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { HeroDetails, Heroes, NotFound } from "pages";
-import { Navbar } from "layout";
+import { Navbar } from "@layout/navbar";
+import { Heroes } from "@pages/heroes";
+import { HeroDetails } from "@pages/heroDetails";
+import { NotFound } from "@pages/notfound";
 
 export const App = () => {
   return (

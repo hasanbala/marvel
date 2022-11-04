@@ -1,9 +1,9 @@
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useContext } from "react";
-import { AppContext } from "context";
 import { MarvelState } from "types";
-import { Hero } from "components";
 import "styles/hereos.scss";
+import { AppContext } from "@context/marvelContext";
+import { Hero } from "@components/hero";
 
 export const Heroes = () => {
   const { superheroes, getHeroes } = useContext(AppContext) as MarvelState;
@@ -14,7 +14,7 @@ export const Heroes = () => {
         <div className="products-sub">
           <InfiniteScroll
             dataLength={superheroes.length}
-            next={() => getHeroes(superheroes.length)}
+            next={() => getHeroes()}
             style={{ display: "flex", flexDirection: "column-reverse" }}
             hasMore={true}
             loader={<h4>{""}</h4>}>
